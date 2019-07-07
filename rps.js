@@ -1,4 +1,4 @@
-const randomNum = Math.floor((Math.random() * 3) + 1);
+let randomNum = Math.floor((Math.random() * 3) + 1);
 const sharkButton = document.getElementById("sharkButton");
 const manateeButton = document.getElementById("manateeButton");
 const humanButton = document.getElementById("humanButton");
@@ -18,8 +18,7 @@ const humanWinMessage = document.createElement('h2');
 const humanLoseMessage = document.createElement('h2');
 const playButton = document.querySelector('.playButton');
 const replayButton = document.querySelector('.replay');
-let scoreDisplay = document.querySelector('.score').firstElementChild;
-let score = 0;
+let currentScore = 0;
 let playerResult = "";
 let computerResult = "";
 
@@ -38,10 +37,25 @@ manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick 
 humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
 humanLoseMessage.textContent = "Shark eats human. You lose!"
 
+function add10() {
+    currentScore = currentScore + 10;
+    document.getElementById('result').innerHTML = currentScore;
+}
 
+function sub10() {
+    currentScore = currentScore - 10;
+    document.getElementById('result').innerHTML = currentScore;
+}
+
+function getRandomNum () {
+    return randomNum;
+}
+    
+    
 
 function playRound () {
     function computerPlay() {
+        getRandomNum(randomNum);
         if (randomNum === 1) {
             results.appendChild(computerSharkMessage);
         } else if (randomNum === 2) {
@@ -60,10 +74,10 @@ function playRound () {
             results.appendChild(sameMessage);
         } else if (randomNum === 2) {
             results.appendChild(sharkLoseMessage);
-            score -= 10;
+            sub10();
         } else if (randomNum === 3) {
             results.appendChild(sharkWinMessage);
-            score += 10;
+            add10();
         }
         replayButton.style.display = "block";
     });
@@ -77,10 +91,10 @@ function playRound () {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
             results.appendChild(manateeWinMessage);
-            score += 10;
+            add10();
         } else if (randomNum === 3) {
             results.appendChild(manateeLoseMessage);
-            score -= 10;
+            sub10();
         }
         replayButton.style.display = "block";
     });
@@ -94,10 +108,10 @@ function playRound () {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
             results.appendChild(humanLoseMessage);
-            score -= 10;
+            sub10();
         } else if (randomNum === 2) {
             results.appendChild(humanWinMessage);
-            score += 10;
+            add10();
         }
         replayButton.style.display = "block";
     });
@@ -113,5 +127,5 @@ replayButton.addEventListener('click', (e) => {
     replayButton.style.display = "none";
 });
 
-scoreDisplay.innerHTML += score;
+
 
