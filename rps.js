@@ -16,7 +16,10 @@ const manateeWinMessage = document.createElement('h2');
 const manateeLoseMessage = document.createElement('h2');
 const humanWinMessage = document.createElement('h2');
 const humanLoseMessage = document.createElement('h2');
-const button = document.querySelector('.button');
+const playButton = document.querySelector('.playButton');
+const replayButton = document.querySelector('.replay');
+let scoreDisplay = document.querySelector('.score').firstElementChild;
+let score = 0;
 let playerResult = "";
 let computerResult = "";
 
@@ -36,6 +39,7 @@ humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Sco
 humanLoseMessage.textContent = "Shark eats human. You lose!"
 
 
+
 function playRound () {
     function computerPlay() {
         if (randomNum === 1) {
@@ -50,45 +54,64 @@ function playRound () {
         results.appendChild(playerSharkMessage);
         let playerResult = 1;
         computerPlay();
-        button.style.display = "none";
+        playButton.style.display = "none";
+        results.style.display = "block";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 2) {
             results.appendChild(sharkLoseMessage);
+            score -= 10;
         } else if (randomNum === 3) {
             results.appendChild(sharkWinMessage);
+            score += 10;
         }
+        replayButton.style.display = "block";
     });
     manateeButton.addEventListener('click', (e) => {
         results.appendChild(playerManateeMessage);
         let playerResult = 2;
         computerPlay();
-        button.style.display = "none";
+        playButton.style.display = "none";
+        results.style.display = "block";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
             results.appendChild(manateeWinMessage);
+            score += 10;
         } else if (randomNum === 3) {
             results.appendChild(manateeLoseMessage);
+            score -= 10;
         }
+        replayButton.style.display = "block";
     });
     humanButton.addEventListener('click', (e) => {
         results.appendChild(playerHumanMessage);
         let playerResult = 3;
         computerPlay();
-        button.style.display = "none";
+        playButton.style.display = "none";
+        results.style.display = "block";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
             results.appendChild(humanLoseMessage);
+            score -= 10;
         } else if (randomNum === 2) {
             results.appendChild(humanWinMessage);
+            score += 10;
         }
+        replayButton.style.display = "block";
     });
 }
 
 playRound();
 
 
+replayButton.addEventListener('click', (e) => {
+    playButton.style.display = "block";
+    results.textContent = "";
+    playRound();
+    replayButton.style.display = "none";
+});
 
+scoreDisplay.innerHTML += score;
 
