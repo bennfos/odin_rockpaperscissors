@@ -1,91 +1,88 @@
 const randomNum = Math.floor((Math.random() * 3) + 1);
-const rock = "rock";
-const paper = "paper";
-const scissors = "scissors";
-const rockButton = document.getElementById("rockButton");
-const paperButton = document.getElementById("paperButton");
-const scissorsButton = document.getElementById("scissorsButton");
+const sharkButton = document.getElementById("sharkButton");
+const manateeButton = document.getElementById("manateeButton");
+const humanButton = document.getElementById("humanButton");
 const results = document.querySelector(".results");
-const playerRockMessage = document.createElement('p');
-const playerPaperMessage = document.createElement('p');
-const playerScissorsMessage = document.createElement('p');
-const computerRockMessage = document.createElement('p');
-const computerPaperMessage = document.createElement('p');
-const computerScissorsMessage = document.createElement('p');
+const playerSharkMessage = document.createElement('p');
+const playerManateeMessage = document.createElement('p');
+const playerHumanMessage = document.createElement('p');
+const computerSharkMessage = document.createElement('p');
+const computerManateeMessage = document.createElement('p');
+const computerHumanMessage = document.createElement('p');
 const sameMessage = document.createElement('h2');
-const rockWinMessage = document.createElement('h2');
-const rockLoseMessage = document.createElement('h2');
-const paperWinMessage = document.createElement('h2');
-const paperLoseMessage = document.createElement('h2');
-const scissorsWinMessage = document.createElement('h2');
-const scissorsLoseMessage = document.createElement('h2');
+const sharkWinMessage = document.createElement('h2');
+const sharkLoseMessage = document.createElement('h2');
+const manateeWinMessage = document.createElement('h2');
+const manateeLoseMessage = document.createElement('h2');
+const humanWinMessage = document.createElement('h2');
+const humanLoseMessage = document.createElement('h2');
 const button = document.querySelector('.button');
 let playerResult = "";
 let computerResult = "";
 
 
-playerRockMessage.textContent = "You threw rock!";
-playerPaperMessage.textContent = "You threw paper!";
-playerScissorsMessage.textContent = "You threw scissors!";
-computerRockMessage.textContent = "I threw rock!";
-computerPaperMessage.textContent = "I threw paper!";
-computerScissorsMessage.textContent = "I threw scissors!";
+playerSharkMessage.textContent = "You chose shark!";
+playerManateeMessage.textContent = "You chose manatee!";
+playerHumanMessage.textContent = "You chose human!";
+computerSharkMessage.textContent = "I chose shark!";
+computerManateeMessage.textContent = "I chose manatee!";
+computerHumanMessage.textContent = "I chose human!";
 sameMessage.textContent = "Samesies! Refresh the page and try again."
-rockLoseMessage.textContent = "Paper covers rock. You lose!"
-rockWinMessage.textContent = "Rock smashes scissors! You win!"
-paperWinMessage.textContent = "Paper covers rock! You win!"
-paperLoseMessage.textContent = "Scissors cut paper. You lose!"
-scissorsWinMessage.textContent = "Scissors cut paper! You win!"
-scissorsLoseMessage.textContent = "Rock smashes scissors. You lose!"
+sharkWinMessage.textContent = "Shark eats human. You win!"
+sharkLoseMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You lose!"
+manateeWinMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You win!"
+manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott.  You lose!"
+humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
+humanLoseMessage.textContent = "Shark eats human. You lose!"
 
 
 function playRound () {
     function computerPlay() {
         if (randomNum === 1) {
-            results.appendChild(computerRockMessage);
+            results.appendChild(computerSharkMessage);
         } else if (randomNum === 2) {
-            results.appendChild(computerPaperMessage);
+            results.appendChild(computerManateeMessage);
         } else {
-            results.appendChild(computerScissorsMessage);
+            results.appendChild(computerHumanMessage);
         }
     }
-    rockButton.addEventListener('click', (e) => {
-        results.appendChild(playerRockMessage);
+    sharkButton.addEventListener('click', (e) => {
+        results.appendChild(playerSharkMessage);
         let playerResult = 1;
         computerPlay();
         button.style.display = "none";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 2) {
-            results.appendChild(rockLoseMessage);
+            results.appendChild(sharkLoseMessage);
         } else if (randomNum === 3) {
-            results.appendChild(rockWinMessage);
+            results.appendChild(sharkWinMessage);
         }
     });
-    paperButton.addEventListener('click', (e) => {
-        results.appendChild(playerPaperMessage);
+    manateeButton.addEventListener('click', (e) => {
+        results.appendChild(playerManateeMessage);
         let playerResult = 2;
         computerPlay();
         button.style.display = "none";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
-            results.appendChild(paperWinMessage);
+            results.appendChild(manateeWinMessage);
         } else if (randomNum === 3) {
-            results.appendChild(paperLoseMessage);
+            results.appendChild(manateeLoseMessage);
         }
     });
-    scissorsButton.addEventListener('click', (e) => {
-        results.appendChild(playerScissorsMessage);
+    humanButton.addEventListener('click', (e) => {
+        results.appendChild(playerHumanMessage);
         let playerResult = 3;
         computerPlay();
         button.style.display = "none";
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
-            results.appendChild(scissorsLoseMessage);
+            results.appendChild(humanLoseMessage);
         } else if (randomNum === 2) {
-            results.appendChild(scissorsWinMessage);
+            results.appendChild(humanWinMessage);
         }
     });
 }
