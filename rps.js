@@ -92,16 +92,3 @@ playRound();
 
 
 
-
-// console.log(randomNum); 
-
-
-
-
-
-
-// function playRound () {
-//     computerPlay()
-//     #rockButton.addEventListener
-// }
-  
