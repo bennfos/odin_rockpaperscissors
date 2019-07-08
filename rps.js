@@ -37,16 +37,19 @@ manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick 
 humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
 humanLoseMessage.textContent = "Shark eats human. You lose!"
 
+// add points when player wins
 function add10() {
     currentScore = currentScore + 10;
     document.getElementById('result').innerHTML = currentScore;
 }
 
+// subtract points when player loses
 function sub10() {
     currentScore = currentScore - 10;
     document.getElementById('result').innerHTML = currentScore;
 }
 
+// returns a random number between 1 and 3
 function getRandomNum () {
     return randomNum;
 }
@@ -54,8 +57,10 @@ function getRandomNum () {
     
 
 function playRound () {
+
+    // gets a random number between 1 and 3 and associates that number with shark, manatee or human
     function computerPlay() {
-        getRandomNum(randomNum);
+        getRandomNum();
         if (randomNum === 1) {
             results.appendChild(computerSharkMessage);
         } else if (randomNum === 2) {
@@ -64,6 +69,8 @@ function playRound () {
             results.appendChild(computerHumanMessage);
         }
     }
+
+    // shark plays
     sharkButton.addEventListener('click', (e) => {
         results.appendChild(playerSharkMessage);
         let playerResult = 1;
@@ -81,6 +88,8 @@ function playRound () {
         }
         replayButton.style.display = "block";
     });
+
+    // manatee plays
     manateeButton.addEventListener('click', (e) => {
         results.appendChild(playerManateeMessage);
         let playerResult = 2;
@@ -98,6 +107,8 @@ function playRound () {
         }
         replayButton.style.display = "block";
     });
+
+    // human plays
     humanButton.addEventListener('click', (e) => {
         results.appendChild(playerHumanMessage);
         let playerResult = 3;
@@ -119,8 +130,9 @@ function playRound () {
 
 playRound();
 
-
+// starts a new round of play
 replayButton.addEventListener('click', (e) => {
+    randomNum = Math.floor((Math.random() * 3) + 1);
     playButton.style.display = "block";
     results.textContent = "";
     playRound();
