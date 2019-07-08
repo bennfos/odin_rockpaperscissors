@@ -18,10 +18,10 @@ const humanWinMessage = document.createElement('h2');
 const humanLoseMessage = document.createElement('h2');
 const playButton = document.querySelector('.playButton');
 const replayButton = document.querySelector('.replay');
+const winningScore = 100;
 let currentScore = 0;
 let playerResult = "";
 let computerResult = "";
-
 
 playerSharkMessage.textContent = "You chose shark!";
 playerManateeMessage.textContent = "You chose manatee!";
@@ -37,13 +37,13 @@ manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick 
 humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
 humanLoseMessage.textContent = "Shark eats human. You lose!"
 
-// add points when player wins
+// add 10 points when player wins
 function add10() {
     currentScore = currentScore + 10;
     document.getElementById('result').innerHTML = currentScore;
 }
 
-// subtract points when player loses
+// subtract 10 points when player loses
 function sub10() {
     currentScore = currentScore - 10;
     document.getElementById('result').innerHTML = currentScore;
@@ -71,7 +71,7 @@ function playRound () {
     }
 
     // shark plays
-    sharkButton.addEventListener('click', (e) => {
+    sharkButton.addEventListener('click', () => {
         results.appendChild(playerSharkMessage);
         let playerResult = 1;
         computerPlay();
@@ -86,11 +86,14 @@ function playRound () {
             results.appendChild(sharkWinMessage);
             add10();
         }
+        if (currentScore >= winningScore) {
+            alert("You WIN!!! Way to be DTL&F");
+        }
         replayButton.style.display = "block";
     });
 
     // manatee plays
-    manateeButton.addEventListener('click', (e) => {
+    manateeButton.addEventListener('click', () => {
         results.appendChild(playerManateeMessage);
         let playerResult = 2;
         computerPlay();
@@ -109,7 +112,7 @@ function playRound () {
     });
 
     // human plays
-    humanButton.addEventListener('click', (e) => {
+    humanButton.addEventListener('click', () => {
         results.appendChild(playerHumanMessage);
         let playerResult = 3;
         computerPlay();
@@ -131,7 +134,7 @@ function playRound () {
 playRound();
 
 // starts a new round of play
-replayButton.addEventListener('click', (e) => {
+replayButton.addEventListener('click', () => {
     randomNum = Math.floor((Math.random() * 3) + 1);
     playButton.style.display = "block";
     results.textContent = "";
