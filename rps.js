@@ -3,12 +3,14 @@ const sharkButton = document.getElementById("sharkButton");
 const manateeButton = document.getElementById("manateeButton");
 const humanButton = document.getElementById("humanButton");
 const results = document.querySelector(".results");
-const playerSharkMessage = document.createElement('p');
-const playerManateeMessage = document.createElement('p');
-const playerHumanMessage = document.createElement('p');
-const computerSharkMessage = document.createElement('p');
-const computerManateeMessage = document.createElement('p');
-const computerHumanMessage = document.createElement('p');
+const playerSharkMessage = document.createElement('img');
+const playerManateeMessage = document.createElement('img');
+const playerHumanMessage = document.createElement('img');
+const computerSharkMessage = document.createElement('img');
+const computerManateeMessage = document.createElement('img');
+const computerHumanMessage = document.createElement('img');
+const shootMessage = document.createElement('h2');
+const vsMessage = document.createElement('h2');
 const sameMessage = document.createElement('h2');
 const sharkWinMessage = document.createElement('h2');
 const sharkLoseMessage = document.createElement('h2');
@@ -23,12 +25,18 @@ let currentScore = 0;
 let playerResult = "";
 let computerResult = "";
 
-playerSharkMessage.textContent = "You chose shark!";
-playerManateeMessage.textContent = "You chose manatee!";
-playerHumanMessage.textContent = "You chose human!";
-computerSharkMessage.textContent = "I chose shark!";
-computerManateeMessage.textContent = "I chose manatee!";
-computerHumanMessage.textContent = "I chose human!";
+playerSharkMessage.src = "shark.svg";
+playerSharkMessage.className = "space-around";
+playerManateeMessage.src = "manatee.svg";
+playerManateeMessage.className = "space-around";
+playerHumanMessage.src = "ceo-user.svg";
+playerHumanMessage.className = "space-around";
+computerSharkMessage.src = "shark.svg";
+computerSharkMessage.className = "space-around";
+computerManateeMessage.src = "manatee.svg";
+computerManateeMessage.className = "space-around";
+computerHumanMessage.src = "ceo-user.svg";
+computerHumanMessage.className = "space-around";
 sameMessage.textContent = "Samesies! Try again."
 sharkWinMessage.textContent = "Shark eats human. You win!"
 sharkLoseMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You lose!"
@@ -36,6 +44,8 @@ manateeWinMessage.textContent = "Manatee gazes lovingly into Shark's eyes until 
 manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott.  You lose!"
 humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
 humanLoseMessage.textContent = "Shark eats human. You lose!"
+shootMessage.textContent = "SHOOT!"
+vsMessage.textContent = "vs."
 
 // add 10 points when player wins
 function add10() {
@@ -72,7 +82,9 @@ function playRound () {
 
     // shark plays
     sharkButton.addEventListener('click', () => {
+        results.appendChild(shootMessage);
         results.appendChild(playerSharkMessage);
+        results.appendChild(vsMessage);
         let playerResult = 1;
         computerPlay();
         playButton.style.display = "none";
@@ -94,7 +106,9 @@ function playRound () {
 
     // manatee plays
     manateeButton.addEventListener('click', () => {
+        results.appendChild(shootMessage);
         results.appendChild(playerManateeMessage);
+        results.appendChild(vsMessage);
         let playerResult = 2;
         computerPlay();
         playButton.style.display = "none";
@@ -113,7 +127,9 @@ function playRound () {
 
     // human plays
     humanButton.addEventListener('click', () => {
+        results.appendChild(shootMessage);
         results.appendChild(playerHumanMessage);
+        results.appendChild(vsMessage);
         let playerResult = 3;
         computerPlay();
         playButton.style.display = "none";
