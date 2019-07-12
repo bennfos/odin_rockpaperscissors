@@ -164,6 +164,7 @@ replayButton.addEventListener('click', () => {
     playButton.style.display = "block";
     results.textContent = "";
     replayButton.style.display = "none";
+    window.scrollTo(0, 0);
 });
 
 

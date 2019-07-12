@@ -19,8 +19,15 @@ article {
 
 button {
     font-size: 50px;
-    border-radius: 5px;
-    
+    border-radius: 5px;    
+}
+
+.rockwell {
+    font-family: Rockwell;
+}
+
+.smallText {
+    font-size: 20px;
 }
 
 button:hover {
