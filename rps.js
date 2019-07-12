@@ -18,7 +18,7 @@ const humanWinMessage = document.createElement('h2');
 const humanLoseMessage = document.createElement('h2');
 const playButton = document.querySelector('.playButton');
 const replayButton = document.querySelector('.replay');
-const winningScore = 100;
+const winningScore = 30;
 let currentScore = 0;
 let playerResult = "";
 let computerResult = "";
@@ -29,7 +29,7 @@ playerHumanMessage.textContent = "You chose human!";
 computerSharkMessage.textContent = "I chose shark!";
 computerManateeMessage.textContent = "I chose manatee!";
 computerHumanMessage.textContent = "I chose human!";
-sameMessage.textContent = "Samesies! Refresh the page and try again."
+sameMessage.textContent = "Samesies! Try again."
 sharkWinMessage.textContent = "Shark eats human. You win!"
 sharkLoseMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You lose!"
 manateeWinMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You win!"
@@ -40,13 +40,13 @@ humanLoseMessage.textContent = "Shark eats human. You lose!"
 // add 10 points when player wins
 function add10() {
     currentScore = currentScore + 10;
-    document.getElementById('result').innerHTML = currentScore;
+    document.getElementById('score__number').innerHTML = currentScore;
 }
 
 // subtract 10 points when player loses
 function sub10() {
-    currentScore = currentScore - 10;
-    document.getElementById('result').innerHTML = currentScore;
+    currentScore = currentScore - 5;
+    document.getElementById('score__number').innerHTML = currentScore;
 }
 
 // returns a random number between 1 and 3
@@ -138,7 +138,6 @@ replayButton.addEventListener('click', () => {
     randomNum = Math.floor((Math.random() * 3) + 1);
     playButton.style.display = "block";
     results.textContent = "";
-    playRound();
     replayButton.style.display = "none";
 });
 

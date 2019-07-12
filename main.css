@@ -1,9 +1,26 @@
+@font-face {
+    font-family: "Brush&Wedco";
+    src: url("Brush&Wedco.otf");
+}
+
+body {
+    font-family: "Brush&Wedco";
+    background-image: url("https://wallpaperplay.com/walls/full/3/f/0/158460.jpg");
+}
+
 article {
     text-align: center;
+    color: rgba(255, 255, 255, 0.884);
+    font-size: 185%;
 }
 
 
 .replay {
     display: none;
+    font-size: 75px;
 }
 
+.playButton {
+    padding: 20px;
+    font-size: 75px;
+}
