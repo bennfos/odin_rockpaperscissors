@@ -38,6 +38,7 @@ computerManateeMessage.className = "space-around";
 computerHumanMessage.src = "ceo-user.svg";
 computerHumanMessage.className = "space-around";
 sameMessage.textContent = "Samesies! Try again."
+sameMessage.style.fontFamily = "Rockwell";
 sharkMessage.textContent = "Shark eats human"
 sharkMessage.style.fontFamily = "Rockwell";
 manateeMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead"
