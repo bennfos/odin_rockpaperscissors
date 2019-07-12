@@ -17,6 +17,17 @@ article {
     font-size: 185%;
 }
 
+button {
+    font-size: 50px;
+    border-radius: 5px;
+    
+}
+
+button:hover {
+    background-color: rgb(226, 224, 224);
+    border: 2px solid black;
+}
+
 
 .replay {
     display: none;
@@ -31,6 +42,10 @@ article {
 .space-around.parentNode {
     display: flex;
 }
+
+.bigText {
+    font-size: 65px
+} 
 
 .space-around {
     justify-content: space-between;

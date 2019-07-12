@@ -12,12 +12,12 @@ const computerHumanMessage = document.createElement('img');
 const shootMessage = document.createElement('h2');
 const vsMessage = document.createElement('h2');
 const sameMessage = document.createElement('h2');
-const sharkWinMessage = document.createElement('h2');
+const sharkMessage = document.createElement('h2');
 const sharkLoseMessage = document.createElement('h2');
-const manateeWinMessage = document.createElement('h2');
-const manateeLoseMessage = document.createElement('h2');
-const humanWinMessage = document.createElement('h2');
-const humanLoseMessage = document.createElement('h2');
+const manateeMessage = document.createElement('h2');
+const humanMessage = document.createElement('h2');
+const winMessage = document.createElement('h2');
+const loseMessage = document.createElement('h2');
 const playButton = document.querySelector('.playButton');
 const replayButton = document.querySelector('.replay');
 const winningScore = 30;
@@ -38,14 +38,17 @@ computerManateeMessage.className = "space-around";
 computerHumanMessage.src = "ceo-user.svg";
 computerHumanMessage.className = "space-around";
 sameMessage.textContent = "Samesies! Try again."
-sharkWinMessage.textContent = "Shark eats human. You win!"
-sharkLoseMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You lose!"
-manateeWinMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead. You win!"
-manateeLoseMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott.  You lose!"
-humanWinMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott. You win!"
-humanLoseMessage.textContent = "Shark eats human. You lose!"
+sharkMessage.textContent = "Shark eats human"
+sharkMessage.style.fontFamily = "Rockwell";
+manateeMessage.textContent = "Manatee gazes lovingly into Shark's eyes until dead"
+manateeMessage.style.fontFamily = "Rockwell";
+humanMessage.textContent = "Manitee's habitat is slowly decimated by Rick Scott"
+humanMessage.style.fontFamily = "Rockwell";
 shootMessage.textContent = "SHOOT!"
 vsMessage.textContent = "vs."
+winMessage.textContent = "You win!"
+loseMessage.textContent = "You lose!"
+
 
 // add 10 points when player wins
 function add10() {
@@ -92,14 +95,16 @@ function playRound () {
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 2) {
-            results.appendChild(sharkLoseMessage);
+            results.appendChild(manateeMessage);
+            results.appendChild(loseMessage);
             sub10();
         } else if (randomNum === 3) {
-            results.appendChild(sharkWinMessage);
+            results.appendChild(sharkMessage);
+            results.appendChild(winMessage);
             add10();
         }
         if (currentScore >= winningScore) {
-            alert("You WIN!!! Way to be DTL&F");
+            alert("You WIN THE GAME!!! Way to be DTL&F");
         }
         replayButton.style.display = "block";
     });
@@ -116,10 +121,12 @@ function playRound () {
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
-            results.appendChild(manateeWinMessage);
+            results.appendChild(manateeMessage);
+            results.appendChild(winMessage);
             add10();
         } else if (randomNum === 3) {
-            results.appendChild(manateeLoseMessage);
+            results.appendChild(humanMessage);
+            results.appendChild(loseMessage);
             sub10();
         }
         replayButton.style.display = "block";
@@ -137,10 +144,12 @@ function playRound () {
         if (randomNum === playerResult) {
             results.appendChild(sameMessage);
         } else if (randomNum === 1) {
-            results.appendChild(humanLoseMessage);
+            results.appendChild(sharkMessage);
+            results.appendChild(loseMessage);
             sub10();
         } else if (randomNum === 2) {
-            results.appendChild(humanWinMessage);
+            results.appendChild(humanMessage);
+            results.appendChild(winMessage);
             add10();
         }
         replayButton.style.display = "block";
