@@ -29,13 +29,13 @@ playerSharkMessage.src = "shark.svg";
 playerSharkMessage.className = "space-around";
 playerManateeMessage.src = "manatee.svg";
 playerManateeMessage.className = "space-around";
-playerHumanMessage.src = "ceo-user.svg";
+playerHumanMessage.src = "man.svg";
 playerHumanMessage.className = "space-around";
 computerSharkMessage.src = "shark.svg";
 computerSharkMessage.className = "space-around";
 computerManateeMessage.src = "manatee.svg";
 computerManateeMessage.className = "space-around";
-computerHumanMessage.src = "ceo-user.svg";
+computerHumanMessage.src = "man.svg";
 computerHumanMessage.className = "space-around";
 sameMessage.textContent = "Samesies! Try again."
 sameMessage.style.fontFamily = "Rockwell";
@@ -67,8 +67,19 @@ function sub10() {
 function getRandomNum () {
     return randomNum;
 }
-    
-    
+
+
+ function computerPlay() {
+        getRandomNum();
+        if (randomNum === 1) {
+            results.appendChild(computerSharkMessage);
+        } else if (randomNum === 2) {
+            results.appendChild(computerManateeMessage);
+        } else {
+            results.appendChild(computerHumanMessage);
+        }
+    }
+
 
 function playRound () {
 
@@ -105,7 +116,7 @@ function playRound () {
             add10();
         }
         if (currentScore >= winningScore) {
-            alert("You WIN THE GAME!!! Way to be DTL&F");
+            alert("You WIN!!!");
         }
         replayButton.style.display = "block";
     });
